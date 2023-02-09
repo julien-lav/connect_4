@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css"></style>
+</head>
+<body>
+    <style type="text/css">
+        body {
+            background-color: #004DA5;
+        }
+        #boardgame  {
+            padding-top: 0.25em;
+        }
+        .center {
+            margin: 0 auto;
+            min-width: 320px;
+            max-width: 1200px;
+        }
+        .row {
+            display: inline-block;
+            min-width: 13.5%;
+            padding-top: 10px;
+            border-top: 10px solid #004DA5;
+            background-color: #004DA5;
+        }
+        .row:hover {
+            border-top: 10px solid #DF0A13;
+        }
+        .inline {
+            display: block;
+            margin-top: 0.2rem;
+            min-height: 15vh;
+            line-height: 15vh;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 2px 4px 6px grey;
+            cursor: pointer;
+        }
+        .yellow {
+            color: #F7E800;
+            background-color: #F7E800;
+        }
+        .red {
+            color: #DF0A13;
+            background-color: #DF0A13;
+        }
+    </style>
+
+<h1></h1>
+
+<section id="boardgame" class="center">
+    <div id="wrapper">
+        <div class="row">
+            <div class="inline" data-row="1" data-position="11"></div>
+            <div class="inline" data-row="1" data-position="12"></div>
+            <div class="inline" data-row="1" data-position="13"></div>
+            <div class="inline" data-row="1" data-position="14"></div>
+            <div class="inline" data-row="1" data-position="15"></div>
+            <div class="inline" data-row="1" data-position="16"></div>
+        </div>
+        <div class="row">
+            <div class="inline" data-row="2" data-position="21"></div>
+            <div class="inline" data-row="2" data-position="22"></div>
+            <div class="inline" data-row="2" data-position="23"></div>
+            <div class="inline" data-row="2" data-position="24"></div>
+            <div class="inline" data-row="2" data-position="25"></div>
+            <div class="inline" data-row="2" data-position="26"></div>
+        </div>
+        <div class="row">
+            <div class="inline" data-row="3" data-position="31"></div>
+            <div class="inline" data-row="3" data-position="32"></div>
+            <div class="inline" data-row="3" data-position="33"></div>
+            <div class="inline" data-row="3" data-position="34"></div>
+            <div class="inline" data-row="3" data-position="35"></div>
+            <div class="inline" data-row="3" data-position="36"></div>
+        </div>
+        <div class="row">
+            <div class="inline" data-row="4" data-position="41"></div>
+            <div class="inline" data-row="4" data-position="42"></div>
+            <div class="inline" data-row="4" data-position="43"></div>
+            <div class="inline" data-row="4" data-position="44"></div>
+            <div class="inline" data-row="4" data-position="45"></div>
+            <div class="inline" data-row="4" data-position="46"></div>
+        </div>
+        <div class="row">
+            <div class="inline" data-row="5" data-position="51"></div>
+            <div class="inline" data-row="5" data-position="52"></div>
+            <div class="inline" data-row="5" data-position="53"></div>
+            <div class="inline" data-row="5" data-position="54"></div>
+            <div class="inline" data-row="5" data-position="55"></div>
+            <div class="inline" data-row="5" data-position="56"></div>
+        </div>
+        <div class="row">
+            <div class="inline" data-row="6" data-position="61"></div>
+            <div class="inline" data-row="6" data-position="62"></div>
+            <div class="inline" data-row="6" data-position="63"></div>
+            <div class="inline" data-row="6" data-position="64"></div>
+            <div class="inline" data-row="6" data-position="65"></div>
+            <div class="inline" data-row="6" data-position="66"></div>
+        </div>
+        <div class="row">
+            <div class="inline" data-row="7" data-position="71"></div>
+            <div class="inline" data-row="7" data-position="72"></div>
+            <div class="inline" data-row="7" data-position="73"></div>
+            <div class="inline" data-row="7" data-position="74"></div>
+            <div class="inline" data-row="7" data-position="75"></div>
+            <div class="inline" data-row="7" data-position="76"></div>
+        </div>
+    </div>
+</section>
+
+
+
+</body>
+<script type="text/javascript">
+
+    //GAME ELEMENTS
+    class Player {
+        constructor(id, name, color) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+        }
+    }
+
+    class Cells {
+        constructor(cell) {
+        this.cell_index = cell;
+        }
+    }
+
+    class Boardgame {
+        constructor(board_array) {
+        this.board_array = board_array;
+        }
+    }
+
+    let BOARDGAME = new Boardgame([
+                                    [
+                                        [0],[0],[0],[0],[0],[0]
+                                    ],
+                                    [
+                                        [0],[0],[0],[0],[0],[0]
+                                    ],
+                                    [
+                                        [0],[0],[0],[0],[0],[0]
+                                    ],
+                                    [
+                                        [0],[0],[0],[0],[0],[0]
+                                    ],
+                                    [
+                                        [0],[0],[0],[0],[0],[0]
+                                    ],
+                                    [
+                                        [0],[0],[0],[0],[0],[0]
+                                    ],
+                                    [
+                                        [0],[0],[0],[0],[0],[0]
+                                    ]
+                                ]);
+
+    let CELLS = new Cells([[],[],[],[],[],[],[]]);
+    let PLAYER_1 = new Player(1, "PLAYER 1", "yellow");
+    let PLAYER_2 = new Player(2, "PLAYER 2", "red");
+    let win_value = 4;
+    let mode_1 = true;
+    let mode_2 = false;
+
+    // GAME LOGIC
+    function init() {
+        game(PLAYER_1, CELLS, BOARDGAME)
+    }
+
+    function game(currentPlayer, cells, boardgame) {
+        window.addEventListener('click', e => {
+            playedRow = e.target.getAttribute('data-row');
+            isRowNotFull = checkRowFull(cells, playedRow);
+
+            if(playedRow && isRowNotFull) {
+                playInRow(cells, currentPlayer, playedRow, boardgame);
+                checkIfWin(cells, currentPlayer, win_value, boardgame);
+                currentPlayer = switchCurrentPlayer(currentPlayer);
+            } else {
+                alert('You can\'t play here, sorry.');
+            }
+        })
+    }
+
+    function switchCurrentPlayer(current) {
+        document.querySelector(".row:hover").style.borderColor = current.color;
+        return (current === PLAYER_1) ? (current = PLAYER_2) : PLAYER_1;
+    }
+
+    function checkRowFull (cells, playedRow) {
+        if (playedRow) {
+            return (cells.cell_index[playedRow - 1][0] === undefined) ? true : false;
+        } else {
+            return false;
+        }
+    }
+
+    function playInRow(cells, currentPlayer, playedRow, boardgame) {
+        let i = boardgame.board_array.length - 1;
+        while(i >= 0) {
+            if(cells.cell_index[playedRow - 1][i] === undefined) {
+                cells.cell_index[playedRow - 1][i] = currentPlayer.id;
+                boardgame.board_array[playedRow - 1][i] = currentPlayer.id;
+                colorDiv(playedRow, i, currentPlayer);
+                i = -1;
+            } else {
+                i--;
+            }
+        }
+    }
+
+    function checkIfWin(cells, currentPlayer, win_value, boardgame) {
+        console.log(boardgame.board_array);
+        let count_y = 0;
+        let count_x = 0;
+
+        for (var j = 0; j < boardgame.board_array.length; j++) {
+            for (var i = 0; i < boardgame.board_array[0].length; i++) {
+                if(boardgame.board_array[j][i-1] === boardgame.board_array[j][i]
+                && boardgame.board_array[j][i-1] === boardgame.board_array[j][i+1]
+                && boardgame.board_array[j][i-1] === boardgame.board_array[j][i+2]
+                && boardgame.board_array[j][i-1] !== undefined) {
+                        alert("VERTICAL WIN FOR " + currentPlayer.color + "!!!");
+                }
+            }
+        }
+        for (var i = 0; i < boardgame.board_array[0].length + 1; i++) {
+            for (var j = 0; j < boardgame.board_array.length - 1; j++) {
+                if(boardgame.board_array[j][i] === boardgame.board_array[j+1][i]
+                && boardgame.board_array[j][i] !== 0
+                && boardgame.board_array[j][i] !== undefined ) {
+                    count_x++;
+                    if (count_x == win_value - 1) {
+                        alert("HORIZONTAL WIN FOR " + currentPlayer.color + "!!!");
+                    }
+                } else {
+                    count_x = 0;
+                }
+            }
+        }
+        for (var j = 0; j < boardgame.board_array.length - 3; j++) {
+            for (var i = 7; i >= 4; i--) {
+                if( boardgame.board_array[j+3][i-3] && boardgame.board_array[j+1][i-1] && boardgame.board_array[j+2][i-2]){
+                    if(boardgame.board_array[j][i] === boardgame.board_array[j+1][i-1]
+                    && boardgame.board_array[j][i] === boardgame.board_array[j+2][i-2]
+                    && boardgame.board_array[j][i] === boardgame.board_array[j+3][i-3]
+                    && boardgame.board_array[j][i] !== undefined ) {
+                            alert("DIAGONAL WIN FOR " + currentPlayer.color + "!!!");
+                    }
+                }
+            }
+        }
+        for (var j = 0; j < boardgame.board_array.length - 3; j++) {
+            for (var i = 5; i >= 0; i--) {
+                if( boardgame.board_array[j+3][i+3] && boardgame.board_array[j+1][i+1] && boardgame.board_array[j+2][i+2]){
+                    if(boardgame.board_array[j][i] === boardgame.board_array[j+1][i+1]
+                    && boardgame.board_array[j][i] === boardgame.board_array[j+2][i+2]
+                    && boardgame.board_array[j][i] === boardgame.board_array[j+3][i+3]
+                    && boardgame.board_array[j][i] !== undefined ) {
+                            alert("DIAGONAL WIN FOR " + currentPlayer.color + "!!!");
+                    }
+                }
+            }
+        }
+    }
+
+    init();
+
+    //GAME DESIGN
+    function colorDiv(row, line, player) {
+        let cell = document.querySelector('[data-position="' + row + line + '"]');
+        return cell ? cell.classList.add(player.color) : null;
+    }
+
+    //HOVER VERIFICATION
+    window.addEventListener('mousemove', e => {
+        if (document.querySelector(".row:hover") != null) {
+            console.log("hovered");
+        }
+    });
+
+
+</script>
+</html>
